@@ -1,1 +1,29 @@
-testing
+---
+layout: default
+---
+ 
+<div id="home">
+  <h2>Posts</h2>
+  <ul class="posts">
+    {% for post in site.posts %}
+      <li><span>{{ post.date | date_to_string }}</span>: <a href="{{ post.url }}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <h2>Tweets</h2>
+  <div id="tweets">
+    Loading...
+  </ul>
+  
+  <script type="text/javascript" src="/javascripts/twitter-1.11.2.js"></script>
+  
+  <script type="text/javascript">
+    getTwitters('tweets', { 
+      id: 'jqr', 
+      count: 5, 
+      enableLinks: true, 
+      clearContents: true,
+      template: '%text%'
+    });
+  </script>
+</div>
