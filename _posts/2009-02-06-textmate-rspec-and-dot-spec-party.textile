@@ -7,9 +7,9 @@ I'm going to show you how to get a great looking RSpec runner window and not go 
 
 <img src="/images/posts/rspec_runner.jpg" />
 
-Beautiful passing green specs, easy to read failing red specs, a clickable backtrace and the failing spec for good measure.
+Beautiful passing green specs, easy to read failing red specs, a clickable backtrace and the failing spec block for good measure.
 
-Pretty sweet right? Let me show you how to get started.
+Pretty sweet right? Let's get started.
 
 <h3>Install RSpec bundle</h3>
 
