@@ -68,7 +68,7 @@ The steps after switching to dot spec:
 
 Who has time to rename all those files? Definitely not you!
 
-If you act now, we'll throw in a <a href="http://github.com/jqr/thor_tasks/raw/master/rspec_rename_to_dotspec.thor">fancy converter</a> for all your old specs!
+There is also a <a href="http://github.com/jqr/thor_tasks/raw/master/rspec_rename_to_dotspec.thor">fancy converter</a> for renaming all of your old specs!
 
 
 {% highlight sh %}
