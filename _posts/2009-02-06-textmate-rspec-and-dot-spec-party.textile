@@ -1,0 +1,80 @@
+---
+layout: post
+title: TextMate, Rspec and Dot Spec Party
+---
+
+I'm going to show you how to get a great looking RSpec runner window and not go insane while trying to use it.
+
+<img src="/images/posts/rspec_runner.jpg" />
+
+Beautiful passing green specs, easy to read failing red specs, a clickable backtrace and the failing spec for good measure.
+
+Pretty sweet right? Let me show you how to get started.
+
+<h3>Install RSpec bundle</h3>
+
+{% highlight sh %}
+mkdir -p ~/Library/Application\ Support/TextMate/Bundles/
+cd ~/Library/Application\ Support/TextMate/Bundles/
+git clone git://github.com/dchelimsky/rspec-tmbundle.git RSpec.tmbundle
+osascript -e 'tell app "TextMate" to reload bundles'
+{% endhighlight %}
+
+<h3>And now the fun begins</h3>
+
+<ol>
+  <li>First you press Shift-Control-Option R (⇧⌃⌥R) to select the RSpec Bundle. This is so easy it only takes two hands.
+    <img src="/images/posts/shift_control_option_r.jpg"></li>
+  <li>Now we need to press Command 3 (⌘3) to select the RSpec Bundle out of the list.
+    <img src="/images/posts/mode_select_r.png" /></li>
+  <li>Command R (⌘R) to run the spec or Shift Command R (⇧⌘R) to run an individual spec.</li>
+  <li>Party time!</li>
+</ol>
+
+<h3>The party's over</h3>
+
+The next time you open a spec or regular Ruby file you'll be started in the mode you last forced. That means you'll probably have to learn to do that tedious keyboard finger dance quite often.
+
+<script type="text/javascript" src="/javascripts/audio-player.js"></script>  
+<script type="text/javascript">  
+  AudioPlayer.setup("/media/player.swf", {  
+    width: 290  
+  });  
+</script>    
+
+<p class="audio" id="obama_complicated">[Audio] "This shit's getting way too complicated for me." - Barack Obama</p>
+<script type="text/javascript">  
+  AudioPlayer.embed("obama_complicated", {soundFile: "/media/obama_complicated.mp3"});  
+</script>
+
+
+We could switch the Ruby and RSpec shortcuts to a simpler keystroke, that would alleviate most of the problem. Except we would still need to press some keystroke to force the mode upon opening a new file.
+
+Running specs needs to be dead simple so people actually do it!
+
+<h3>Dot spec has invited you to a party!</h3>
+ 
+There's a far easier way to solve this problem. Just rename all your spec files to .spec and you will only have to tell TextMate one time to use RSpec mode and it will remember forever!
+
+The steps after switching to dot spec:
+
+<ol>
+  <li>Command R (⌘R) to run the spec or Shift Command R (⇧⌘R) to run an individual spec.</li>
+  <li>Party Time!
+    <img src="http://www.scienceyear.com/parents/party_time/images/party_time_top.gif" /></li>
+</ol>
+
+<h3>You've also been invited to a pre-party!</h3>
+
+Who has time to rename all those files? Definitely not you!
+
+If you act now, we'll throw in a <a href="http://github.com/jqr/thor_tasks/raw/master/rspec_rename_to_dotspec.thor">fancy converter</a> for all your old specs!
+
+
+{% highlight sh %}
+# in your project dir
+gem install thor &&
+thor install \
+http://github.com/jqr/thor_tasks/raw/master/rspec_rename_to_dotspec.thor &&
+thor rspec:rename_to_dotspec
+{% endhighlight %}
