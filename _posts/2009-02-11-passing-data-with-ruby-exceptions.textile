@@ -1,0 +1,63 @@
+---
+layout: post
+title: Passing Data With Ruby Exceptions
+---
+
+Have you ever needed more than the exception class, error message and back-trace when handling an exception?
+
+I've run into this situation a few times, most recently while adding some automatic cache expiry to <a href="http://github.com/jqr/stale_object_destroyer">stale_object_destroyer</a> when it rescues a ActiveRecord::StaleObjectError.
+
+First we subclass an exception and add an accessor for the data we'd like to pass and add it to the initialize method for easy construction.
+
+{% highlight ruby %}
+class MyException < StandardError
+  attr_accessor :object
+
+  def initialize(message = nil, object = nil)
+    super(message)
+    self.object = object
+  end
+end
+{% endhighlight %}
+
+The only other important bit is how you raise this new exception.
+
+{% highlight ruby %}
+raise MyException.new("Too Lazy", object)
+{% endhighlight %}
+
+h3. A realistic example
+
+{% highlight ruby %}
+class CacheError < StandardError
+  attr_accessor :object
+
+  def initialize(message = nil, object = nil)
+    super(message)
+    self.object = object
+  end
+end
+
+class User < ActiveRecord::Base
+  attr_accessor :name
+  
+  def save_with_cache_update
+    raise CacheError.new("Object is Stale", self) if stale?
+    save
+  end
+  
+  def stale?
+    # ...
+  end
+end
+
+begin
+  user = User.find_by_name("Billy Mays")
+  # ...
+  user.save_with_cache_update
+rescue CacheError => err
+  puts "Rescued #{err.inspect} on user named #{err.object.name.inspect}"
+  err.object.expire_cache
+  retry
+end
+{% endhighlight %}
