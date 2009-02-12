@@ -6,6 +6,8 @@ title: The Making of typed_serialize
 My <a href="http://github.com/jqr/typed_serialize">typed_serialize plugin</a> came from the repetition of code just like this.
 
 {% highlight ruby %}
+serialize :options, Hash
+
 def options
   value = super 
   if value.is_a?(Hash)
@@ -84,9 +86,9 @@ class ActiveRecord::Base
 end
 {% endhighlight %}
 
-The original code has a couple of small problems. It assumes the value should always be a Hash and written attribute is always named options.
+The original code has a couple of small problems when inserted into this context. It assumes the value should always be a Hash and written attribute is always named options.
 
-A quick look at serialize's implementation tells us it stores its data a hash with the key as the attribute name in string form, and the value is the class_name.
+A quick look at serialize's implementation tells us it stores its data in a hash with the key as the attribute name in string form, and the value is the class_name. We'll use that to derive the expected class.
 
 {% highlight ruby %}
 expected_class = self.class.serialized_attributes[attr_name.to_s]
