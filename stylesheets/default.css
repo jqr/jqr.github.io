@@ -95,5 +95,12 @@ h3 {
 
 #post {
   margin-bottom: 30px;
-  
+}
+
+#disqus_thread {
+  margin-bottom: 30px;
+}
+
+#related {
+  margin-bottom: 130px;
 }
