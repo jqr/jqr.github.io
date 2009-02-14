@@ -104,3 +104,7 @@ h3 {
 #related {
   margin-bottom: 130px;
 }
+
+#posts p {
+  margin: 5px 0 25px 0;
+}

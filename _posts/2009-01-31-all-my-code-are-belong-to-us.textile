@@ -1,6 +1,7 @@
 ---
 layout: post
 title: All My Code Are Belong to Us
+summary: A blog is born.
 ---
 
 I've really been pushing myself to move as much code as possible into the public space. <a href="http://github.com">GitHub</a> has come at a perfect time to encourage this behavior. It makes the tedious process of sharing code so easy you'd be stupid not to.

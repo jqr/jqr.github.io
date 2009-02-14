@@ -1,6 +1,7 @@
 ---
 layout: post
 title: TextMate, Rspec and Dot Spec Party
+summary: Getting all your friends to play nice.
 ---
 
 I'm going to show you how to get a great looking RSpec runner window and not go insane while trying to use it.

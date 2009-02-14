@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Making Rails' Serialize Even Better
+summary: An improved pattern for Rails attribute serializing.
 ---
 
 Rails has this handy method that allows you store almost any object in the database with ease. Most often I end up using it for storing optional attributes in a hash.

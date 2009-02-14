@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Passing Data With Ruby Exceptions
+summary: Do more than raise an exception with a message!
 ---
 
 Have you ever needed more than the exception class, error message and back-trace when handling an exception?

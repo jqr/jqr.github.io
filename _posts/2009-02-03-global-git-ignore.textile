@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Global Git Ignore
+summary: Keeping your repositories clean.
 ---
 OS X has this file that creeps into any directory you browse called <a href="http://en.wikipedia.org/wiki/.DS_Store">.DS_Store</a>. All to often this file will accidentally get committed to a repository.
 
