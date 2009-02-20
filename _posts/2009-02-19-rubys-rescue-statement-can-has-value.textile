@@ -1,0 +1,35 @@
+---
+title: Ruby's Rescue Statement Can Has Value?
+summary: An interesting way to catch and return an exception with very little code.
+layout: post
+---
+
+I just discovered something interesting about Ruby's exception rescuing. Check out these two example methods that differ only by exception assignment.
+
+{% highlight ruby %}
+def return_nil_on_error
+  begin
+    yield
+  rescue
+  end
+end
+
+def return_exception_on_error
+  begin
+    yield
+  rescue => err
+  end
+end
+
+puts return_nil_on_error { raise "error!" }.inspect
+puts return_exception_on_error { raise "error!" }.inspect
+{% endhighlight %}
+
+Running the code above and this is what you will see.
+
+{% highlight ruby %}
+nil
+#<RuntimeError: error!>
+{% endhighlight %}
+
+It's interesting to see that Ruby treats the a rescue block as a value expression if it assigns the exception to a variable. Is there a valid use for this oddity?
