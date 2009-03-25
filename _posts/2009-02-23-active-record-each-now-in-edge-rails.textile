@@ -1,18 +1,20 @@
 ---
-title: ActiveRecord::Base#each Now in Edge Rails
+title: ActiveRecord::Base#find_each Now in Rails
 summary: Smart record iteration for large tables.
 layout: post
 ---
-When you absolutely need to traverse a large number of objects in a table and have the ActiveRecord instance available, Rails now has a Model.each method that makes this safe and easy.
+*Updated to reflect Rails 2.3 release implementation*
+
+When you absolutely need to traverse a large number of objects in a table and have the ActiveRecord instance available, Rails now has a Model.find_each method that makes this safe and easy.
 
 {% highlight ruby %}
-User.each(:conditions => ['last_login_at < ?', 30.days.ago]) do |user|
+User.find_each(:conditions => ['last_login_at < ?', 30.days.ago]) do |user|
   # ...
 end
 {% endhighlight %}
 
-This feature has been available for a while through the use of a few <a href="http://github.com/guillermo/active_record_each">plugins</a> and <a href="http://weblog.jamisbuck.org/2007/4/6/faking-cursors-in-activerecord">snippets</a> floating around, but today <a href="http://github.com/rails/rails/blob/d13623ca46c82120c398f4634e206422fc3ad7ea/activerecord/lib/active_record/batches.rb">ActiveRecord::Base#each was added to Rails</a>.
+This feature has been available for a while through the use of a few <a href="http://github.com/guillermo/active_record_each">plugins</a> and <a href="http://weblog.jamisbuck.org/2007/4/6/faking-cursors-in-activerecord">snippets</a> floating around, but as of Rails 2.3 ActiveRecord::Base#find_each is now in Rails core.
   
 All the implementations of this feature take roughly the same route. Grab a sizable amount of records, yield them individually and repeat. The key feature is only a small subset of all rows are instantiated at any time. This prevents your process from using far more memory than is available. Most implementations even force the ordering to the primary key to easily ensure all records are retrieved without repetition and an index is used.
 
-You can use any options a normal find call would take except for order or limit. Model.each then calls the find_in_batches. The new batch_size option defaults to 1000 objects. Higher number means less database calls, but also more memory.
+You can use any options a normal find call would take except for order or limit. Model.find_each then calls the find_in_batches. The new batch_size option defaults to 1000 objects. Higher number means less database calls, but also more memory.
