@@ -1,0 +1,48 @@
+---
+layout: post
+title: Deploy Your Rails Application in 2 Minutes with Heroku
+summary: The simplest possible application deployment for Rails applications.
+---
+
+<a href="http://heroku.com/">Heroku</a>, Instant Ruby Platform. We've been using Heroku's free service for hosting staging servers for a few weeks now. It takes just a moment to setup and it couldn't be any easier to use.
+
+Today Heroku announced a <a href="http://heroku.com/pricing">pricing model</a> and we should be using them for more than staging servers in the near future.
+
+<h3>Start the clock</h3>
+
+First timer? You'll need to do some minor setup. The last command will ask you for your Heroku login/password and upload your SSH pubkey.
+
+{% highlight sh %}
+sudo gem install heroku
+heroku create
+{% endhighlight %}
+
+Heroku installs gem dependencies for your app when you do a git push, so it needs to have a .gems file in an easy to parse format.
+
+Run these commands to install a rake task for automatically generating a .gems file from your Rails gem dependencies. You'll need to rerun the rake task whenever you change your dependencies.
+
+{% highlight sh %}
+curl http://gist.github.com/101101.txt > lib/tasks/heroku.rake
+rake heroku:gems
+git add lib/tasks/heroku.rake .gems 
+git commit lib/tasks/heroku.rake .gems -m "Adding gem manifest for Heroku."
+{% endhighlight %}
+
+Here we go, push your app, migrate the database and open it in a web browser! 
+
+{% highlight sh %}
+git push heroku master
+heroku rake db:migrate
+heroku open
+{% endhighlight %}
+
+Done!
+
+<h3>Troubleshooting</h3>
+
+If the application had any trouble starting try the commands below to get a better view.
+
+{% highlight sh %}
+heroku logs     # view the application logs
+heroku open     # some error messages show on the web
+{% endhighlight %}
