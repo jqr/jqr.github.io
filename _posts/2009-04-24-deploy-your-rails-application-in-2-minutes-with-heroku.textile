@@ -36,7 +36,7 @@ heroku rake db:migrate
 heroku open
 {% endhighlight %}
 
-Done!
+Done! Your application is up and running on Heroku's servers, 100% ready to use.
 
 <h3>Troubleshooting</h3>
 
