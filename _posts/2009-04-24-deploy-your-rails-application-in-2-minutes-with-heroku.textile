@@ -10,10 +10,11 @@ Today Heroku announced a <a href="http://heroku.com/pricing">pricing model</a> a
 
 <h3>Start the clock</h3>
 
-First timer? You'll need to do some minor setup. The last command will ask you for your Heroku login/password and upload your SSH pubkey.
+First timer? You'll need to do some minor setup. The middle command will ask you for your Heroku login/password and upload your SSH pubkey.
 
 {% highlight sh %}
 sudo gem install heroku
+heroku keys:add
 heroku create
 {% endhighlight %}
 
