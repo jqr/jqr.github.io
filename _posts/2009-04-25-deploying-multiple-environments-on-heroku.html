@@ -17,9 +17,11 @@ branch. You'll probably be pushing staging and production servers from different
 
 <h3>Create your servers and fix your remotes</h3>
 
+Application names have to be unique on Heroku, so make sure to replace myapp with your application's name. You can do that automatically by <a href="#" id="replace_application_name">clicking here</a>.
+
 {% highlight sh %}
-heroku create testapp-staging
-heroku create testapp-production
+heroku create myapp-staging
+heroku create myapp-production
 {% endhighlight %}
 
 <p>The heroku command adds one remote for their servers, but since we'll be
@@ -27,8 +29,8 @@ pushing to two applications we'll make two sensibly named remotes. </p>
 
 {% highlight sh %}
 git remote rm heroku
-git remote add staging git@heroku.com:testapp-staging.git
-git remote add production git@heroku.com:testapp-production.git
+git remote add staging git@heroku.com:myapp-staging.git
+git remote add production git@heroku.com:myapp-production.git
 {% endhighlight %}
 
 <h3>Environment specific variables</h3>
@@ -42,8 +44,8 @@ control.</p>
 <p>If you run your staging server in the production environment, you can skip this step.</p>
 
 {% highlight sh %}
-heroku config:add RACK_ENV=staging --app testapp-staging
-heroku config:add RACK_ENV=production --app testapp-production
+heroku config:add RACK_ENV=staging --app myapp-staging
+heroku config:add RACK_ENV=production --app myapp-production
 {% endhighlight %}
 
 <h3>Deploy and migrate</h3>
@@ -55,11 +57,11 @@ the staging server's master branch. Since this is the first deploy we'll need to
 git push staging master
 git push production master
 
-heroku rake db:migrate --app testapp-staging
-heroku rake db:migrate --app testapp-production
+heroku rake db:migrate --app myapp-staging
+heroku rake db:migrate --app myapp-production
 
-heroku open --app testapp-staging
-heroku open --app testapp-production
+heroku open --app myapp-staging
+heroku open --app myapp-production
 {% endhighlight %}
 
 <h3>Done</h3>
@@ -71,10 +73,25 @@ heroku open --app testapp-production
 <p>The heroku command seems to detect the application name by looking through
 git's remotes for remotes that are located at heroku.com. This means it will
 get confused by the multiple entries we created. You will need to work around
-this by passing --app testapp-staging after the normal heroku command.</p>
+this by passing --app myapp-staging after the normal heroku command.</p>
 
 <h3>Troubleshooting</h3>
 
 <p>Make sure you followed my original guide on <a
 href="/2009/04/24/deploy-your-rails-application-in-2-minutes-with-heroku.html">getting
 your application deployed to Heroku</a>.</p>
+
+<script type="text/javascript">
+  document.observe('dom:loaded', function() {
+    $('replace_application_name').observe('click', replaceApplicationName)
+  });
+  var old_name = 'myapp';
+  function replaceApplicationName(event) {
+    event.stop();
+    var new_name = prompt('Enter your application name:');
+    $$('pre').each(function(element) {
+      element.update(element.innerHTML.replace(RegExp(old_name, 'g'), new_name));
+    });
+    old_name = new_name;
+  }
+</script>
