@@ -1,0 +1,78 @@
+---
+layout: post
+title: Deploying Multiple Environments on Heroku
+summary: Run multiple branches/environments of the same code on Heroku.
+---
+
+So you followed yesterday's guide on <a href="/2009/04/24/deploy-your-rails-application-in-2-minutes-with-heroku.html">getting your application deployed to
+Heroku</a>, and now you've fallen in love with it. Now you need to setup both a
+production and staging environment that you can easily deploy your application
+to.
+
+So far Heroku only runs code in one branch, so we'll work around this by
+creating two remote repositories that we can push to.
+
+For example simplicity, we'll be pushing all code out of the same git
+branch. You'll probably be pushing staging and production servers from different branches, adjust accordingly.
+
+<h3>Create your servers and fix your remotes</h3>
+
+{% highlight sh %}
+heroku create testapp-staging
+heroku create testapp-production
+{% endhighlight %}
+
+The heroku command adds one remote for their servers, but since we'll be
+pushing to two applications we'll make two sensibly named remotes. 
+
+{% highlight sh %}
+git remote rm heroku
+git remote add staging git@heroku.com:testapp-staging.git
+git remote add production git@heroku.com:testapp-production.git
+{% endhighlight %}
+
+<h3>Environment specific variables</h3>
+
+Heroku has a nice interface for setting up application specific settings, but
+I will assume your application configures itself according to the
+RAILS_ENV variable. Check out <a
+href="http://docs.heroku.com/config-vars">Heroku's docs</a> if you need more
+control.
+
+{% highlight sh %}
+heroku config:add RACK_ENV=staging --app testapp-staging
+heroku config:add RACK_ENV=production --app testapp-production
+{% endhighlight %}
+
+<h3>Deploy and migrate</h3>
+
+You'll be doing this next command pretty often. We push the current branch to
+the staging server's master branch. Since this is the first deploy we'll need to do the same thing for production and run all the migrations.
+
+{% highlight sh %}
+git push staging master
+git push production master
+
+heroku rake db:migrate --app testapp-staging
+heroku rake db:migrate --app testapp-production
+
+heroku open --app testapp-staging
+heroku open --app testapp-production
+{% endhighlight %}
+
+<h3>Done</h3>
+
+Celebrate! You now have two servers running on Heroku with different databases and accessible through domains. Seriously, how long did that take?
+
+<h3>Caveats</h3>
+
+The heroku command seems to detect the application name by looking through
+git's remotes for remotes that are located at heroku.com. This means it will
+get confused by the multiple entries we created. You will need to work around
+this by passing --app testapp-staging after the normal heroku command.
+
+<h3>Troubleshooting</h3>
+
+Make sure you followed my original guide on <a
+href="/2009/04/24/deploy-your-rails-application-in-2-minutes-with-heroku.html">getting
+your application deployed to Heroku</a>.
