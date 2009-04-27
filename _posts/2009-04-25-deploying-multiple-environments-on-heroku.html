@@ -20,18 +20,11 @@ branch. You'll probably be pushing staging and production servers from different
 Application names have to be unique on Heroku, so make sure to replace myapp with your application's name. You can do that automatically by <a href="#" id="replace_application_name">clicking here</a>.
 
 {% highlight sh %}
-heroku create myapp-staging
-heroku create myapp-production
+heroku create myapp-staging --remote staging
+heroku create myapp-production --remote production
 {% endhighlight %}
 
-<p>The heroku command adds one remote for their servers, but since we'll be
-pushing to two applications we'll make two sensibly named remotes. </p>
-
-{% highlight sh %}
-git remote rm heroku
-git remote add staging git@heroku.com:myapp-staging.git
-git remote add production git@heroku.com:myapp-production.git
-{% endhighlight %}
+<p>Since we'll be pushing to two applications we are using the --remote argument to make two sensibly named remotes.</p>
 
 <h3>Environment specific variables</h3>
 
