@@ -1,0 +1,93 @@
+---
+layout: post
+title: iPhone Toggle Switches
+summary: A big improvement over boring HTML checkboxes
+css:
+  - http://github.com/tdreyno/iphone-style-checkboxes/raw/e4066fc8b01809c853073139919d70eddb8e85c8/style.css 
+  - /stylesheets/posts/iphone-toggle-switches.css
+javascript:
+  - http://github.com/tdreyno/iphone-style-checkboxes/raw/e4066fc8b01809c853073139919d70eddb8e85c8/prototype/scriptaculous-effects-1.8.2.js
+  - http://github.com/tdreyno/iphone-style-checkboxes/raw/e4066fc8b01809c853073139919d70eddb8e85c8/prototype/iphone-style-checkboxes.js
+  - /javascripts/posts/iphone-toggle-switches.js
+---
+
+<p>
+  Way back in June, <a href="http://awardwinningfjords.com/">Thomas Reynolds</a>
+  released <a
+  href="http://awardwinningfjords.com/2009/06/16/iphone-style-checkboxes.html">iPhone-style-checkboxes
+  for jQuery</a>, a progressive enhancement for checkboxes which makes them into
+  the beautiful iPhone toggle switches. I really like these switches on the
+  iPhone so I went about finishing up his version for the Prototype framework.
+  Of course, I couldn't help but add some new features along the way!
+</p>
+
+<p class="rss_only">
+  <strong>
+    You definitely need to <a href="http://jqr.github.com{{ page.url }}">read 
+    this article on my site</a> to see all the cool JavaScript effects I'm 
+    talking about!
+  </strong>
+</p>
+
+<h3>Variable sizes</h3>
+
+<p>
+  The initial version supported changing the ON/OFF label text, but if you made
+the text longer than a few characters, it would be hidden under the handle. I
+set about making the handle and label sizes automatic based on the actual
+label text.
+</p>
+
+<p>
+  <input type="checkbox" id="variable_size_male_female"/>
+  <input type="checkbox" id="variable_size_a_b"/>
+</p>
+
+<p>
+  As a bonus, you can also specify that no automatic resizing should be done and
+  do the control and handle sizing with CSS to make a group of controls uniform.
+</p>
+
+<p style="width: 200px;">
+  <input type="checkbox" id="static_size_a"/>
+  <input type="checkbox" id="static_size_b"/>
+  <input type="checkbox" id="static_size_c"/>
+</p>
+
+<h3>Draggable</h3>
+
+<p>
+  They certainly looked like the iPhone switches, but they didn't feel like
+  them. You could only click them to toggle, we needed to add support for 
+  dragging the control.
+</p>
+
+<input type="checkbox" id="draggable" checked="checked"/>
+
+<h3>Sliding labels</h3>
+
+<p>
+  A quick check through the network graph revealed <a
+  href="http://github.com/mlangenberg">Matthijs Langenberg</a> had devised a
+  clever way to slide the labels along with the handle. This was the final
+  piece, now the our JavaScript was nearly indistinguishable from the native
+  iPhone one.
+</p>
+
+<p><input type="checkbox" id="sliding_labels" /></p>
+
+<h3>iPhone compatibility</h3>
+
+<p>
+  Last but not least, our checkboxes didn't support dragging on the iPhone!
+  Since the iPhone sends out touch events instead of mouse ones, all of our 
+  cool dragging code would need to be updated. As of today, both 
+  versions of this plugin now fully support the iPhone.
+</p>
+
+<h3>Thanks</h3>
+
+<p>
+  A huge thanks to Thomas Reynolds for his development on this awesome plugin
+  and giving me the ability to add these improvements.
+</p>
