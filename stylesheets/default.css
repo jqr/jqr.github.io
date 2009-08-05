@@ -108,3 +108,7 @@ h3 {
 #posts p {
   margin: 5px 0 25px 0;
 }
+
+.rss_only {
+  display: none;
+}
