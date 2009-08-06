@@ -14,7 +14,7 @@ body {
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 
-a:hover, #sidebar a:hover, #content a {
+a:hover, a:active, #sidebar a:active, #sidebar a:hover, #content a {
   color: #b40;
 }
 #site {
@@ -32,7 +32,7 @@ h1 {
   padding: 20px;
 }
 
-h1 a {
+h1 a, h1 a:link, h1 a:visited {
   text-decoration: none;
   color: inherit;
 }
@@ -47,7 +47,7 @@ h1 a {
   border-left: 5px solid #eee;
   float: right;
 }
-#sidebar a {
+#sidebar a, #sidebar a:link #sidebar a:visited {
   display: block;
   color: inherit;
 }
@@ -77,6 +77,7 @@ h1 a {
 #content ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
 }
 #content li {
   margin-bottom: 10px;
