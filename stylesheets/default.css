@@ -106,10 +106,61 @@ h3 {
   margin-bottom: 30px;
 }
 
-#posts p {
+.posts p {
   margin: 5px 0 25px 0;
 }
 
 .rss_only {
+  display: none;
+}
+
+#search_area {
+  width: 80px;
+  float: right;
+  margin: 19px 50px;
+  position: relative;
+}
+#search {
+  font-size: 17px;
+  font-family: inherit;
+  border: 1px solid #ccc;
+  color: #666;
+  -moz-border-radius: 30px; 
+  -webkit-border-radius: 13px; 
+  padding: 3px 27px 3px 27px;
+  background: url(http://www.famfamfam.com/lab/icons/silk/icons/magnifier.png) 7px 6px no-repeat ;
+  width: 100%;
+  margin: 0;
+}
+#search:focus {
+  outline: none;
+}
+
+#search_area label {
+  font-size: 17px;
+  position: absolute;
+  top: 4px;
+  left: 29px;
+  color: #ccc;
+  cursor: text;
+  padding: 0;
+}
+
+#search_area img {
+  display: none;
+}
+.searching #search_area img {
+  position: absolute;
+  left: 113px;
+  top: 7px;
+  display: block;
+}
+#search_results_area {
+  display: none;
+}
+.searching #search_results_area {
+  display: block;
+}
+.searching #home {
   display: none;
 }

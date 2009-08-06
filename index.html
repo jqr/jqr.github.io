@@ -1,10 +1,20 @@
 ---
 layout: default
+javascript:
+  - /javascripts/json_search.0.9.0.js
+  - /javascripts/home.js
 ---
  
+
+<div id="search_results_area">
+  <h2>Posts <span id="result_count"></span></h2>
+  <ul id="search_results" class="posts">
+  </ul>
+</div>
+
 <div id="home">
-  <h2>Posts <span id="post_count"></span></h2>
-  <ul id="posts">
+  <h2>Posts</h2>
+  <ul class="posts">
     {% for post in site.posts %}
       <li>
         <a href="{{ post.url }}">{{ post.title }}</a>
@@ -12,12 +22,27 @@ layout: default
       </li>
     {% endfor %}
   </ul>
-
+  
   <h2>Tweets</h2>
   <div id="tweets">
     Loading...
   </ul>
   
+  <script type="text/javascript" charset="utf-8">
+    var posts = [
+      {% for post in site.posts %}
+        {
+          title:   unescape('{{ post.title   | strip_html | cgi_escape }}').gsub(/\+/, ' '),
+          summary: unescape('{{ post.summary | strip_html | cgi_escape }}').gsub(/\+/, ' '),
+          content: unescape('{{ post.content | strip_html | cgi_escape }}').gsub(/\+/, ' '),
+          url:     unescape('{{ post.url     | strip_html | cgi_escape }}').gsub(/\+/, ' '),
+        },
+      {% endfor %}
+    0];
+  
+    posts.pop();
+  </script>
+
   <script type="text/javascript" src="/javascripts/twitter-1.11.2.js"></script>
   
   <script type="text/javascript">
