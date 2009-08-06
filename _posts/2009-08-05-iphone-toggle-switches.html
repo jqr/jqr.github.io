@@ -3,11 +3,11 @@ layout: post
 title: iPhone Toggle Switches
 summary: A big improvement over boring HTML checkboxes.
 css:
-  - http://github.com/tdreyno/iphone-style-checkboxes/raw/23129c9dc0fc3f4e55eab43235831bcbe104b1a0/style.css 
+  - http://github.com/tdreyno/iphone-style-checkboxes/raw/afe2d2a07db7d5f38dd3aa0383f9836630c27185/style.css 
   - /stylesheets/posts/iphone-toggle-switches.css
 javascript:
-  - http://github.com/tdreyno/iphone-style-checkboxes/raw/23129c9dc0fc3f4e55eab43235831bcbe104b1a0/prototype/scriptaculous-effects-1.8.2.js
-  - http://github.com/tdreyno/iphone-style-checkboxes/raw/23129c9dc0fc3f4e55eab43235831bcbe104b1a0/prototype/iphone-style-checkboxes.js
+  - http://github.com/tdreyno/iphone-style-checkboxes/raw/afe2d2a07db7d5f38dd3aa0383f9836630c27185/prototype/scriptaculous-effects-1.8.2.js
+  - http://github.com/tdreyno/iphone-style-checkboxes/raw/afe2d2a07db7d5f38dd3aa0383f9836630c27185/prototype/iphone-style-checkboxes.js
   - /javascripts/posts/iphone-toggle-switches.js
 ---
 
@@ -39,8 +39,8 @@ label text.
 </p>
 
 <p>
-  <input type="checkbox" id="variable_size_male_female"/>
-  <input type="checkbox" id="variable_size_a_b"/>
+  <div><label class="left" for="variable_size_male_female">Sex</label> <input type="checkbox" id="variable_size_male_female"/></div>
+  <div><label class="left" for="variable_size_a_b">Path</label> <input type="checkbox" id="variable_size_a_b"/></div>
 </p>
 
 <p>
@@ -48,11 +48,11 @@ label text.
   do the control and handle sizing with CSS to make a group of controls uniform.
 </p>
 
-<p style="width: 200px;">
-  <input type="checkbox" id="static_size_a"/>
-  <input type="checkbox" id="static_size_b"/>
-  <input type="checkbox" id="static_size_c"/>
-</p>
+<div style="width: 400px;">
+  <div><label class="left" for="static_size_a">Be you robot?</label> <input type="checkbox" id="static_size_a"/></div>
+  <div><label class="left" for="static_size_b">Comments</label> <input type="checkbox" id="static_size_b"/></div>
+  <div><label class="left" for="static_size_c">Option C</label> <input type="checkbox" id="static_size_c"/></div>
+</div>
 
 <h3>Draggable</h3>
 
@@ -62,7 +62,7 @@ label text.
   dragging the control.
 </p>
 
-<input type="checkbox" id="draggable" checked="checked"/>
+<div><label class="left" for="variable_size_male_female">Do it</label> <input type="checkbox" id="draggable" checked="checked"/></div>
 
 <h3>Sliding labels</h3>
 
@@ -74,7 +74,9 @@ label text.
   iPhone one.
 </p>
 
-<p><input type="checkbox" id="sliding_labels" /></p>
+<p>
+  <div><label class="left" for="sliding_labels">Go man go!</label> <input type="checkbox" id="sliding_labels" /></div>
+</p>
 
 <h3>iPhone compatibility</h3>
 

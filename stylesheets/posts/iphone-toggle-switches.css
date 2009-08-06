@@ -1,3 +1,10 @@
 .iPhoneCheckContainer {
   margin: 15px;
 }
+
+label.left {
+  float: left;
+  text-align: right;
+  width: 160px;
+  padding-right: 15px;
+}

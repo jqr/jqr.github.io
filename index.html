@@ -1,9 +1,29 @@
 ---
 layout: default
+javascript:
+  - /javascripts/json_search.0.9.0.js
+  - /javascripts/home.js
 ---
  
 <div id="home">
-  <h2>Posts</h2>
+  <input id="search">
+
+  <script type="text/javascript" charset="utf-8">
+    var posts = [
+      {% for post in site.posts %}
+      {
+        title:   unescape('{{ post.title   | strip_html | cgi_escape }}').gsub(/\+/, ' '),
+        summary: unescape('{{ post.summary | strip_html | cgi_escape }}').gsub(/\+/, ' '),
+        content: unescape('{{ post.content | strip_html | cgi_escape }}').gsub(/\+/, ' '),
+        url:     unescape('{{ post.url     | strip_html | cgi_escape }}').gsub(/\+/, ' '),
+      },
+      {% endfor %}
+    0];
+  
+    posts.pop();
+  </script>
+  
+  <h2>Posts <span id="post_count"></span></h2>
   <ul id="posts">
     {% for post in site.posts %}
       <li>
