@@ -41,11 +41,13 @@ config.gem 'jqr-typed_serialize',
 {% endhighlight %}
 
 Now run this command to install the gem.
+
 {% highlight sh %}
 $ rake gems:install
 {% endhighlight %}
 
 A quick change of our model will fix all of our woes.
+
 {% highlight ruby %}
 class User < ActiveRecord::Base
   typed_serialize :options, Hash
