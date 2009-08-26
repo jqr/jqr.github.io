@@ -10,7 +10,7 @@ layout: nil
  <updated>{{ site.time | date_to_xmlschema }}</updated>
  <id>http://jqr.github.com/</id>
  <author>
-   <name>Elijah hMiller</name>
+   <name>Elijah Miller</name>
    <email>elijah.miller@gmail.com</email>
  </author>
  
