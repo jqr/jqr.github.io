@@ -48,7 +48,6 @@ h1 a, h1 a:link, h1 a:visited {
   float: right;
 }
 #sidebar a, #sidebar a:link #sidebar a:visited {
-  display: block;
   color: #222;
 }
 #sidebar dl, #sidebar ul {
@@ -67,7 +66,8 @@ h1 a, h1 a:link, h1 a:visited {
 #sidebar a {
   text-decoration: none;
 }
-#sidebar  {
+#sidebar .adr, #sidebar .tel {
+  display: none;
 }
 
 #content {
