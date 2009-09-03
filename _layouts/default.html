@@ -10,6 +10,9 @@
        Elijah Miller
      </title>
      <meta name="author" content="Elijah Miller" />
+     {% if page.summary %}
+       <meta namne="description" content="{{ page.summary }}" />
+     {% endif %}
      <link href="http://feeds2.feedburner.com/jqr" rel="alternate" title="Elijah Miller" type="application/atom+xml" />
 
      <link rel="stylesheet" href="/stylesheets/syntax.css" type="text/css" />
