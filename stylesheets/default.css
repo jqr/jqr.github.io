@@ -94,6 +94,12 @@ h3 {
   padding: 15px;
 }
 
+.update {
+  border: 1px solid #fc6;
+  background: #fe8;
+  padding: 15px;
+  text-align: center;
+}
 #post {
   margin-bottom: 30px;
 }
