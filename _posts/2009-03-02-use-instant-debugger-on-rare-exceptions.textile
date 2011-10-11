@@ -24,6 +24,7 @@ rows.each do |row|
   rescue => err
     require 'ruby-debug'
     debugger
+    1 # no-op so the debugger can land in this context
   end
 end
 {% endhighlight %}
