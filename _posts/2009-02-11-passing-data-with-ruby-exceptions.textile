@@ -41,12 +41,12 @@ end
 
 class User < ActiveRecord::Base
   attr_accessor :name
-  
+
   def save_with_cache_update
     raise CacheError.new("Object is Stale", self) if stale?
     save
   end
-  
+
   def stale?
     # ...
   end

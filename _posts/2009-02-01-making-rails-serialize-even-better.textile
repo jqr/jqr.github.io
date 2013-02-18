@@ -35,8 +35,8 @@ What we really need is to automatically return an empty Hash on this new object 
 Add this to your environment.rb.
 
 {% highlight ruby %}
-config.gem 'jqr-typed_serialize', 
-  :lib => 'typed_serialize', 
+config.gem 'jqr-typed_serialize',
+  :lib => 'typed_serialize',
   :source => 'http://gems.github.com'
 {% endhighlight %}
 

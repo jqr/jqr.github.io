@@ -10,7 +10,7 @@ My <a href="http://github.com/jqr/typed_serialize">typed_serialize plugin</a> ca
 serialize :options, Hash
 
 def options
-  value = super 
+  value = super
   if value.is_a?(Hash)
     value
   else
@@ -40,7 +40,7 @@ This code says "there is a typed and serialized attribute named options, that wi
 First off, we define a method that is accessible at the time of class definition. Since the usage is the same as serialize, we can use the original serialize method definition as a starting point.
 
 {% highlight ruby %}
-class ActiveRecord::Base 
+class ActiveRecord::Base
   def self.typed_serialize(attr_name, class_name = Object)
   end
 end
@@ -49,7 +49,7 @@ end
 On second thought, what's the point of class_name being optional? It made sense for the original serialize method, but not typed_serialize. Let's make class_name mandatory.
 
 {% highlight ruby %}
-class ActiveRecord::Base 
+class ActiveRecord::Base
   def self.typed_serialize(attr_name, class_name)
   end
 end
@@ -59,7 +59,7 @@ end
 OK, now our User model can properly execute, but it does absolutely nothing. So let's at least call Rails' serialize method to get the standard behavior.
 
 {% highlight ruby %}
-class ActiveRecord::Base 
+class ActiveRecord::Base
   def self.typed_serialize(attr_name, class_name = Object)
     serialize(attr_name, class_name)
   end
@@ -71,12 +71,12 @@ end
 Our repeated code revolved around a custom reader for a serialized attribute. So let's add a custom reader for attr_name using define_method and our original repeated code.
 
 {% highlight ruby %}
-class ActiveRecord::Base 
+class ActiveRecord::Base
   def self.typed_serialize(attr_name, class_name = Object)
     serialize(attr_name, class_name)
 
     define_method(attr_name) do
-      value = super 
+      value = super
       if value.is_a?(Hash)
         value
       else
@@ -104,15 +104,15 @@ send("#{attr_name}=", expected_class.new)
 <h3>All together now.</h3>
 
 {% highlight ruby %}
-class ActiveRecord::Base 
+class ActiveRecord::Base
   def self.typed_serialize(attr_name, class_name = Object)
     serialize(attr_name, class_name)
 
     define_method(attr_name) do
       expected_class = self.class.serialized_attributes[attr_name.to_s]
-    
+
       value = super
-      if value.is_a?(expected_class) 
+      if value.is_a?(expected_class)
         value
       else
         send("#{attr_name}=", expected_class.new)

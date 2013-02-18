@@ -4,7 +4,7 @@ javascript:
   - /javascripts/json_search.0.9.0.js
   - /javascripts/home.js
 ---
- 
+
 
 <div id="search_results_area">
   <h2>Posts <span id="result_count"></span></h2>
@@ -22,12 +22,12 @@ javascript:
       </li>
     {% endfor %}
   </ul>
-  
+
   <h2>Tweets</h2>
   <div id="tweets">
     Loading...
   </ul>
-  
+
   <script type="text/javascript" charset="utf-8">
     var posts = [
       {% for post in site.posts %}
@@ -39,17 +39,17 @@ javascript:
         },
       {% endfor %}
     0];
-  
+
     posts.pop();
   </script>
 
   <script type="text/javascript" src="/javascripts/twitter-1.11.2.js"></script>
-  
+
   <script type="text/javascript">
-    getTwitters('tweets', { 
-      id: 'jqr', 
-      count: 5, 
-      enableLinks: true, 
+    getTwitters('tweets', {
+      id: 'jqr',
+      count: 5,
+      enableLinks: true,
       clearContents: true,
       template: '%text%'
     });

@@ -36,16 +36,16 @@ osascript -e 'tell app "TextMate" to reload bundles'
 
 The next time you open a spec or regular Ruby file you'll be started in the mode you last forced. That means you'll probably have to learn to do that tedious keyboard finger dance quite often.
 
-<script type="text/javascript" src="/javascripts/audio-player.js"></script>  
-<script type="text/javascript">  
-  AudioPlayer.setup("/media/player.swf", {  
-    width: 290  
-  });  
-</script>    
+<script type="text/javascript" src="/javascripts/audio-player.js"></script>
+<script type="text/javascript">
+  AudioPlayer.setup("/media/player.swf", {
+    width: 290
+  });
+</script>
 
 <p class="audio" id="obama_complicated">[Audio] "This shit's getting way too complicated for me." - Barack Obama</p>
-<script type="text/javascript">  
-  AudioPlayer.embed("obama_complicated", {soundFile: "/media/obama_complicated.mp3"});  
+<script type="text/javascript">
+  AudioPlayer.embed("obama_complicated", {soundFile: "/media/obama_complicated.mp3"});
 </script>
 
 
@@ -54,7 +54,7 @@ We could switch the Ruby and RSpec shortcuts to a simpler keystroke, that would 
 Running specs needs to be dead simple so people actually do it!
 
 <h3>Dot spec has invited you to a party!</h3>
- 
+
 There's a far easier way to solve this problem. Just rename all your spec files to .spec and you will only have to tell TextMate one time to use RSpec mode and it will remember forever!
 
 The steps after switching to dot spec:

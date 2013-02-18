@@ -16,7 +16,7 @@ document.observe("dom:loaded", function() {
       content: 1
     }
   });
-  
+
   var search = function(e) {
     if (e && e.keyCode == 27) {
       clear();
@@ -36,18 +36,18 @@ document.observe("dom:loaded", function() {
       body.removeClassName('searching');
     }
     $('result_count').update('(' + results.length + ')');
-    
+
     $('search_results').update(results.collect(function(post) {
       return('<li><a href="' + post.url + '">' + post.title + '</a><p>' + post.summary + '</p></li>');
     }).join(''));
   };
-  
+
   if (search_field.value.blank()) {
     search_label.show();
   }
 
   search_field.observe('keyup', search);
-  
+
   search_field.observe('focus', function(e) {
     search_label.hide();
   });
