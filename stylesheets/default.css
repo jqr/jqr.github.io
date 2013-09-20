@@ -170,3 +170,8 @@ h3 {
 .searching #home {
   display: none;
 }
+
+.date {
+  float: right;
+  color: #ccc;
+}
