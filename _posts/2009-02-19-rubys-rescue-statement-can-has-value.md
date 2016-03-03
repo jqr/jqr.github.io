@@ -6,7 +6,7 @@ layout: post
 
 I just discovered something interesting about Ruby's exception rescuing. Check out these two example methods that differ only by exception assignment.
 
-{% highlight ruby %}
+```ruby
 def return_nil_on_error
   begin
     yield
@@ -23,13 +23,13 @@ end
 
 puts return_nil_on_error { raise "error!" }.inspect
 puts return_exception_on_error { raise "error!" }.inspect
-{% endhighlight %}
+```
 
 Running the code above and this is what you will see.
 
-{% highlight ruby %}
+```ruby
 nil
 #<RuntimeError: error!>
-{% endhighlight %}
+```
 
 It's interesting to see that Ruby treats the a rescue block as a value expression if it assigns the exception to a variable. Is there a valid use for this oddity?

@@ -14,12 +14,12 @@ Pretty sweet right? Let's get started.
 
 <h3>Install RSpec bundle</h3>
 
-{% highlight sh %}
+```sh
 mkdir -p ~/Library/Application\ Support/TextMate/Bundles/
 cd ~/Library/Application\ Support/TextMate/Bundles/
 git clone git://github.com/dchelimsky/rspec-tmbundle.git RSpec.tmbundle
 osascript -e 'tell app "TextMate" to reload bundles'
-{% endhighlight %}
+```
 
 <h3>And now the fun begins</h3>
 
@@ -72,10 +72,10 @@ Who has time to rename all those files? Definitely not you!
 There is also a <a href="http://github.com/jqr/thor_tasks/raw/master/rspec_rename_to_dotspec.thor">fancy converter</a> for renaming all of your old specs!
 
 
-{% highlight sh %}
+```sh
 # in your project dir
 gem install thor &&
 thor install \
 http://github.com/jqr/thor_tasks/raw/master/rspec_rename_to_dotspec.thor &&
 thor rspec:rename_to_dotspec
-{% endhighlight %}
+```

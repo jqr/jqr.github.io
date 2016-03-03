@@ -7,17 +7,17 @@ Most of the time a backtrace can help you zero in on a bug in your code quickly,
 
 You could throw in some statements to print out certain variables to "see" what your code "sees" at that point in time, but there is a far easier way.
 
-h3. Your friend: debugger
+### Your friend: debugger
 
 The excellent ruby-debug gem lets you open up an instance of irb wherever you put a call to debugger. If you haven't already, check out the excellent <a href="http://pivotallabs.com/users/chad/blog/articles/366-ruby-debug-in-30-seconds-we-don-t-need-no-stinkin-gui-">30 second guide to ruby-debug</a>. Just type in "irb" when the debugger triggers to get a live irb session with the current state.
 
 Normally this is more than enough to fix the problematic data/code. Today though I was iterating through a rather large set of data for importing from CSV. The problem data was something like 5 minutes into the import. I needed to open the debugger at the instant of the problem data and not on the thousands of rows of good data that preceded it.
 
-h3. Start on a dime
+### Start on a dime
 
 A light when off in my head after a few minutes of stumbling around in console. Why not just wrap the offending bit of code in a rescue block and only open the debugger at that instant? I give you Instant Debug.
 
-{% highlight ruby %}
+```ruby
 rows.each do |row|
   begin
     Item.create!(row)
@@ -27,7 +27,7 @@ rows.each do |row|
     1 # no-op so the debugger can land in this context
   end
 end
-{% endhighlight %}
+```
 
 Now if this code fails for any reason, we can see the exact state of the application that caused this problem. We are able to reproduce the issue easily by calling Item.create!(row) and we can even modify row to see if we can fix bad data.
 

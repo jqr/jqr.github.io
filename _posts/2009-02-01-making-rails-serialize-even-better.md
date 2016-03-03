@@ -8,17 +8,17 @@ Rails has this handy method that allows you store almost any object in the datab
 
 Here is the proper syntax for telling Rails that there is an options attribute that should only store Hash values.
 
-{% highlight ruby %}
+```ruby
 class User < ActiveRecord::Base
   serialize :options, Hash
 end
-{% endhighlight %}
+```
 
 <h3>The problem</h3>
 
 The options attribute will start off as nil, and remain nil until you set it to something else. Setting the class_name to Hash only affects what you can write to this attribute.
 
-{% highlight irb %}
+```ruby
 >> user = User.new
 => #<User id: nil, name: nil, options: nil>
 >> user.options[:theme]
@@ -27,41 +27,41 @@ You might have expected an instance of ActiveRecord::Base.
 The error occurred while evaluating nil.[]
 	from (irb):2
 => nil
-{% endhighlight %}
+```
 
 <h3>The solution</h3>
 What we really need is to automatically return an empty Hash on this new object so we can go on our merry way.
 
 Add this to your environment.rb.
 
-{% highlight ruby %}
+```ruby
 config.gem 'jqr-typed_serialize',
   :lib => 'typed_serialize',
   :source => 'http://gems.github.com'
-{% endhighlight %}
+```
 
 Now run this command to install the gem.
 
-{% highlight sh %}
+```sh
 $ rake gems:install
-{% endhighlight %}
+```
 
 A quick change of our model will fix all of our woes.
 
-{% highlight ruby %}
+```ruby
 class User < ActiveRecord::Base
   typed_serialize :options, Hash
 end
-{% endhighlight %}
+```
 
-{% highlight irb %}
+```ruby
 >> user = User.new
 => #<User id: nil, name: nil, options: nil>
 >> user.options[:theme]
 => nil
 >> user.options
 => {}
-{% endhighlight %}
+```
 
 Voila!
 

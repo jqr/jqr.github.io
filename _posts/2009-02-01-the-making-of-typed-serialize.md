@@ -6,7 +6,7 @@ summary: The design process of a Rails pattern.
 
 My <a href="http://github.com/jqr/typed_serialize">typed_serialize plugin</a> came from the repetition of code just like this.
 
-{% highlight ruby %}
+```ruby
 serialize :options, Hash
 
 def options
@@ -17,7 +17,7 @@ def options
     self.options = {}
   end
 end
-{% endhighlight %}
+```
 
 It calls super to peek at what ActiveRecord would return for the serialized column. If it's a Hash, we just return it right away. If it's anything else we set it to a new Hash and return that.
 
@@ -26,11 +26,11 @@ It calls super to peek at what ActiveRecord would return for the serialized colu
 
 After thinking about the pattern for a bit, I decided that simplest shorthand would be this.
 
-{% highlight ruby %}
+```ruby
 class User < ActiveRecord::Base
   typed_serialize :options, Hash
 end
-{% endhighlight %}
+```
 
 This code says "there is a typed and serialized attribute named options, that will always be a Hash." Notice that it is nearly the same usage as the original serialize method.
 
@@ -39,38 +39,38 @@ This code says "there is a typed and serialized attribute named options, that wi
 
 First off, we define a method that is accessible at the time of class definition. Since the usage is the same as serialize, we can use the original serialize method definition as a starting point.
 
-{% highlight ruby %}
+```ruby
 class ActiveRecord::Base
   def self.typed_serialize(attr_name, class_name = Object)
   end
 end
-{% endhighlight %}
+```
 
 On second thought, what's the point of class_name being optional? It made sense for the original serialize method, but not typed_serialize. Let's make class_name mandatory.
 
-{% highlight ruby %}
+```ruby
 class ActiveRecord::Base
   def self.typed_serialize(attr_name, class_name)
   end
 end
-{% endhighlight %}
+```
 
 
 OK, now our User model can properly execute, but it does absolutely nothing. So let's at least call Rails' serialize method to get the standard behavior.
 
-{% highlight ruby %}
+```ruby
 class ActiveRecord::Base
   def self.typed_serialize(attr_name, class_name = Object)
     serialize(attr_name, class_name)
   end
 end
-{% endhighlight %}
+```
 
 <h3>Adding the meat</h3>
 
 Our repeated code revolved around a custom reader for a serialized attribute. So let's add a custom reader for attr_name using define_method and our original repeated code.
 
-{% highlight ruby %}
+```ruby
 class ActiveRecord::Base
   def self.typed_serialize(attr_name, class_name = Object)
     serialize(attr_name, class_name)
@@ -85,25 +85,25 @@ class ActiveRecord::Base
     end
   end
 end
-{% endhighlight %}
+```
 
 The original code has a couple of small problems when inserted into this context. It assumes the value should always be a Hash and written attribute is always named options.
 
 A quick look at serialize's implementation tells us it stores its data in a hash with the key as the attribute name in string form, and the value is the class_name. We'll use that to derive the expected class.
 
-{% highlight ruby %}
+```ruby
 expected_class = self.class.serialized_attributes[attr_name.to_s]
-{% endhighlight %}
+```
 
 We'll use Ruby's send method to call a method with a name we won't know until runtime.
 
-{% highlight ruby %}
+```ruby
 send("#{attr_name}=", expected_class.new)
-{% endhighlight %}
+```
 
 <h3>All together now.</h3>
 
-{% highlight ruby %}
+```ruby
 class ActiveRecord::Base
   def self.typed_serialize(attr_name, class_name = Object)
     serialize(attr_name, class_name)
@@ -120,6 +120,6 @@ class ActiveRecord::Base
     end
   end
 end
-{% endhighlight %}
+```
 
 This is my first post detailing an implementation. Interestingly enough, it alerted me to a few unnecessarily complex portions of even this tiny amount of code.

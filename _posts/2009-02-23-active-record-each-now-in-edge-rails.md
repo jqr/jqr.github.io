@@ -7,11 +7,11 @@ layout: post
 
 When you absolutely need to traverse a large number of objects in a table and have the ActiveRecord instance available, Rails now has a Model.find_each method that makes this safe and easy.
 
-{% highlight ruby %}
+```ruby
 User.find_each(:conditions => ['last_login_at < ?', 30.days.ago]) do |user|
   # ...
 end
-{% endhighlight %}
+```
 
 This feature has been available for a while through the use of a few <a href="http://github.com/guillermo/active_record_each">plugins</a> and <a href="http://weblog.jamisbuck.org/2007/4/6/faking-cursors-in-activerecord">snippets</a> floating around, but as of Rails 2.3 ActiveRecord::Base#find_each is now in Rails core.
 

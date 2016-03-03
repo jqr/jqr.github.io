@@ -9,10 +9,10 @@ Every time I setup a new git project, I end up adding .DS_Store to the .gitignor
 
 Git supports global ignores just like any good SCM.
 
-{% highlight sh %}
+```sh
 $ git config --global core.excludesfile ~/.gitignore
 $ printf ".DS_Store\nThumbs.db\n" >> ~/.gitignore
-{% endhighlight %}
+```
 
 
 For good measure I threw in Windows' creepy file <a href="http://en.wikipedia.org/wiki/Thumbs.db">Thumbs.db</a>.

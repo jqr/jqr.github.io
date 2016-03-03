@@ -10,7 +10,7 @@ I've run into this situation a few times, most recently while adding some automa
 
 First we subclass an exception and add an accessor for the data we'd like to pass and add it to the initialize method for easy construction.
 
-{% highlight ruby %}
+```ruby
 class MyException < StandardError
   attr_accessor :object
 
@@ -19,17 +19,17 @@ class MyException < StandardError
     self.object = object
   end
 end
-{% endhighlight %}
+```
 
 The only other important bit is how you raise this new exception.
 
-{% highlight ruby %}
+```ruby
 raise MyException.new("Too Lazy", object)
-{% endhighlight %}
+```
 
-h3. A realistic example
+### A realistic example
 
-{% highlight ruby %}
+```ruby
 class CacheError < StandardError
   attr_accessor :object
 
@@ -61,4 +61,4 @@ rescue CacheError => err
   err.object.expire_cache
   retry
 end
-{% endhighlight %}
+```

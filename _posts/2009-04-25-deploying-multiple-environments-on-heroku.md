@@ -21,10 +21,10 @@ branch. You'll probably be pushing staging and production servers from different
 
 Application names have to be unique on Heroku, so make sure to replace myapp with your application's name. You can do that automatically by <a href="#" id="replace_application_name">clicking here</a>.
 
-{% highlight sh %}
+```sh
 heroku create myapp-staging --remote staging
 heroku create myapp-production --remote production
-{% endhighlight %}
+```
 
 <p>Since we'll be pushing to two applications we are using the --remote argument to make two sensibly named remotes.</p>
 
@@ -38,17 +38,17 @@ control.</p>
 
 <p>If you run your staging server in the production environment, you can skip this step.</p>
 
-{% highlight sh %}
+```sh
 heroku config:add RACK_ENV=staging --app myapp-staging
 heroku config:add RACK_ENV=production --app myapp-production
-{% endhighlight %}
+```
 
 <h3>Deploy and migrate</h3>
 
 <p>You'll be doing this next command pretty often. We push the current branch to
 the staging server's master branch. Since this is the first deploy we'll need to do the same thing for production and run all the migrations.</p>
 
-{% highlight sh %}
+```sh
 git push staging master
 git push production master
 
@@ -57,7 +57,7 @@ heroku rake db:migrate --app myapp-production
 
 heroku open --app myapp-staging
 heroku open --app myapp-production
-{% endhighlight %}
+```
 
 <h3>Done</h3>
 

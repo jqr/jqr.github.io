@@ -23,7 +23,7 @@ javascript:
   <a href="http://microformats.org/code/hcard/creator">hCard Creator</a>.
 </p>
 
-{% highlight html %}
+```html
 <div id="hcard-starbucks" class="vcard">
   <a class="url fn" href="http://starbucks.com">Starbucks</a>
   <div class="adr">
@@ -34,7 +34,7 @@ javascript:
     <span class="country-name">USA</span>
   </div>
 </div>
-{% endhighlight %}
+```
 
 <p>
   Rendered as HTML using default styling, this looks like:
@@ -65,9 +65,9 @@ javascript:
 </p>
 
 
-{% highlight html %}
+```html
 <div id="map" style="width: 100%; height: 400px"></div>
-{% endhighlight %}
+```
 
 <div id="map" style="width: 100%; height: 400px">Map would be here if you had javascript enabled.</div>
 

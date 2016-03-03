@@ -88,7 +88,7 @@ h3 {
   padding: 0;
 }
 
-.highlight pre {
+pre.highlight {
   background: #eee;
   border: 1px solid #ccc;
   padding: 15px;

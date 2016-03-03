@@ -6,11 +6,11 @@ summary: When, Where and Why you should use Ruby's self method.
 
 There are only a few occasions when you need to use self prefix in Ruby. Understanding these only takes a few minutes and can help you avoid some pretty common bugs and wasteful debugging attempts.
 
-h3. Avoiding local variable assignment
+###  Avoiding local variable assignment
 
 Calling a writer in the current scope, as in:
 
-{% highlight ruby %}
+```ruby
 class User
   def verify
     self.verified = true
@@ -20,48 +20,48 @@ class User
     @verified = value
   end
 end
-{% endhighlight %}
+```
 
 If you didn't prefix self to that assignment, you would be making a new local variable and setting it to true. This variable has a lifetime of 1 statement, probably not what you were looking for and an easy bug to miss.
 
 
-h3. Side-stepping reserved words
+### Side-stepping reserved words
 
 Occasionally you need to call a method in the current scope that has the same name as a Ruby keyword. An instance wanting to introspect its its own class is a very common use.
 
-{% highlight ruby %}
+```ruby
 class Song < ActiveRecord::Base
   def find_dupliactes
     self.class.find_by_name(name)
   end
 end
-{% endhighlight %}
+```
 
 In this case you are explicitly side-stepping the global behavior of the keyword. If you omit self, Ruby thinks you're about to define a new class, and is going to give you a syntax error.
 
-h3. Defining class methods
+### Defining class methods
 
-{% highlight ruby %}
+```ruby
 class Store < ActiveRecord::Base
   def self.locate_by_zip_code(zip_code)
     # some fancy searching code
   end
 end
-{% endhighlight %}
+```
 
-The use of self in this example tells Ruby that we're making methods on the Store class and not its instances.
+The use of self in this example tells Ruby that we're making methods on the `Store` class and not its instances.
 
-h3. That's it!
+### That's it!
 
-3 simple cases where you need to use self. All other uses are just being overly explicit.
+Three simple cases where you need to use self. All other uses are just being overly explicit.
 
-h3. Gotcha: Tricky sub-objects
+### Gotcha: Tricky sub-objects
 
 Sub-objects only need to use the self prefix when you want to assign the whole object at a time. For example when initializing or setting an entire Hash, Array, or some other object.
 
-If you're actually just manipulating the other object, you don't need to call self, because you're really calling two methods. In this case one is the reader, the other is the [] method on a Hash.
+If you're actually just manipulating the other object, you don't need to call self, because you're really calling two methods. In this case one is the reader, the other is the `[]` method on a Hash.
 
-{% highlight ruby %}
+```ruby
 class Server
   attr_accessor :options
 
@@ -77,4 +77,4 @@ class Server
     options[:warnings] = !options[:warnings]
   end
 end
-{% endhighlight %}
+```
