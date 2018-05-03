@@ -9,7 +9,7 @@ You could throw in some statements to print out certain variables to "see" what 
 
 ### Your friend: debugger
 
-The excellent ruby-debug gem lets you open up an instance of irb wherever you put a call to debugger. If you haven't already, check out the excellent <a href="http://pivotallabs.com/users/chad/blog/articles/366-ruby-debug-in-30-seconds-we-don-t-need-no-stinkin-gui-">30 second guide to ruby-debug</a>. Just type in "irb" when the debugger triggers to get a live irb session with the current state.
+The excellent ruby-debug gem lets you open up an instance of irb wherever you put a call to debugger. If you haven't already, check out the excellent <a href="https://pivotallabs.com/users/chad/blog/articles/366-ruby-debug-in-30-seconds-we-don-t-need-no-stinkin-gui-">30 second guide to ruby-debug</a>. Just type in "irb" when the debugger triggers to get a live irb session with the current state.
 
 Normally this is more than enough to fix the problematic data/code. Today though I was iterating through a rather large set of data for importing from CSV. The problem data was something like 5 minutes into the import. I needed to open the debugger at the instant of the problem data and not on the thousands of rows of good data that preceded it.
 

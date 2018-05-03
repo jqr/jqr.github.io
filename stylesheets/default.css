@@ -134,7 +134,7 @@ pre.highlight {
   -moz-border-radius: 30px;
   -webkit-border-radius: 13px;
   padding: 3px 27px 3px 27px;
-  background: url(http://www.famfamfam.com/lab/icons/silk/icons/magnifier.png) 7px 6px no-repeat ;
+  background: url(/images/magnifier.png) 7px 6px no-repeat ;
   width: 100%;
   margin: 0;
 }

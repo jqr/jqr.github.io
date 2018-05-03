@@ -4,13 +4,13 @@ title: Easy Heroku Deploys with Heroku San
 summary: Deploy and maintain multiple Heroku apps with ease.
 ---
 
-We deploy a great deal of our apps to <a href="http://heroku.com">Heroku</a>, but maintaining multiple environments (staging, production, demo) was traditionally <a href="/2009/04/25/deploying-multiple-environments-on-heroku.html">very painful</a>.
+We deploy a great deal of our apps to <a href="https://heroku.com">Heroku</a>, but maintaining multiple environments (staging, production, demo) was traditionally <a href="/2009/04/25/deploying-multiple-environments-on-heroku.html">very painful</a>.
 
-<a href="http://github.com/fastestforward/heroku_san">heroku_san</a> is a simple set of rake tasks to make standard Rails deployment easy. Multiple apps, environments, branches and users are handled with the minimum of effort.
+<a href="https://github.com/fastestforward/heroku_san">heroku_san</a> is a simple set of rake tasks to make standard Rails deployment easy. Multiple apps, environments, branches and users are handled with the minimum of effort.
 
 ### Initial Setup
 
-I won't bore you with the details of <a href="http://github.com/fastestforward/heroku_san/blob/master/README.rdoc">installing the gem and including the rake tasks</a>, but you need to know that heroku_san works by using a YAML file with shorthand versions of your Heroku application names. It looks like this:
+I won't bore you with the details of <a href="https://github.com/fastestforward/heroku_san/blob/master/README.rdoc">installing the gem and including the rake tasks</a>, but you need to know that heroku_san works by using a YAML file with shorthand versions of your Heroku application names. It looks like this:
 
 ```yaml
 apps:
@@ -84,8 +84,8 @@ rake staging deploy
 
 ### Even More!
 
-A full list of commands heroku_san provides is available in the <a href="http://github.com/fastestforward/heroku_san/blob/master/README.rdoc">README</a>.
+A full list of commands heroku_san provides is available in the <a href="https://github.com/fastestforward/heroku_san/blob/master/README.rdoc">README</a>.
 
 ### Special Thanks
 
-Thanks to <a href="http://github.com/glennr">Glenn Roberts</a>, who was kind enough to convert heroku_san from a Rails plugin into a gem, making updates a breeze.
+Thanks to <a href="https://github.com/glennr">Glenn Roberts</a>, who was kind enough to convert heroku_san from a Rails plugin into a gem, making updates a breeze.

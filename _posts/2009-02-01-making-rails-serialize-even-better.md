@@ -37,7 +37,7 @@ Add this to your environment.rb.
 ```ruby
 config.gem 'jqr-typed_serialize',
   :lib => 'typed_serialize',
-  :source => 'http://gems.github.com'
+  :source => 'https://gems.github.com'
 ```
 
 Now run this command to install the gem.
@@ -67,5 +67,5 @@ Voila!
 
 <h3>The how and why</h3>
 
-If you're curious about how this works, I've written a simple post describing the <a href="/2009/02/01/the-making-of-typed-serialize.html">the making of typed_serialize</a>, or you can <a href="http://github.com/jqr/typed_serialize">browse the code</a>.
+If you're curious about how this works, I've written a simple post describing the <a href="/2009/02/01/the-making-of-typed-serialize.html">the making of typed_serialize</a>, or you can <a href="https://github.com/jqr/typed_serialize">browse the code</a>.
 

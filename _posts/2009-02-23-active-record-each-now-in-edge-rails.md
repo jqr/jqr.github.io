@@ -13,7 +13,7 @@ User.find_each(:conditions => ['last_login_at < ?', 30.days.ago]) do |user|
 end
 ```
 
-This feature has been available for a while through the use of a few <a href="http://github.com/guillermo/active_record_each">plugins</a> and <a href="http://weblog.jamisbuck.org/2007/4/6/faking-cursors-in-activerecord">snippets</a> floating around, but as of Rails 2.3 ActiveRecord::Base#find_each is now in Rails core.
+This feature has been available for a while through the use of a few <a href="https://github.com/guillermo/active_record_each">plugins</a> and <a href="https://weblog.jamisbuck.org/2007/4/6/faking-cursors-in-activerecord">snippets</a> floating around, but as of Rails 2.3 ActiveRecord::Base#find_each is now in Rails core.
 
 All the implementations of this feature take roughly the same route. Grab a sizable amount of records, yield them individually and repeat. The key feature is only a small subset of all rows are instantiated at any time. This prevents your process from using far more memory than is available. Most implementations even force the ordering to the primary key to easily ensure all records are retrieved without repetition and an index is used.
 

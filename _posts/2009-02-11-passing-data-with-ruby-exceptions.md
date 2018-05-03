@@ -6,7 +6,7 @@ summary: Do more than raise an exception with a message!
 
 Have you ever needed more than the exception class, error message and back-trace when handling an exception?
 
-I've run into this situation a few times, most recently while adding some automatic cache expiry to <a href="http://github.com/jqr/stale_object_destroyer">stale_object_destroyer</a> when it rescues a ActiveRecord::StaleObjectError.
+I've run into this situation a few times, most recently while adding some automatic cache expiry to <a href="https://github.com/jqr/stale_object_destroyer">stale_object_destroyer</a> when it rescues a ActiveRecord::StaleObjectError.
 
 First we subclass an exception and add an accessor for the data we'd like to pass and add it to the initialize method for easy construction.
 

@@ -69,13 +69,13 @@ The steps after switching to dot spec:
 
 Who has time to rename all those files? Definitely not you!
 
-There is also a <a href="http://github.com/jqr/thor_tasks/raw/master/rspec_rename_to_dotspec.thor">fancy converter</a> for renaming all of your old specs!
+There is also a <a href="https://github.com/jqr/thor_tasks/raw/master/rspec_rename_to_dotspec.thor">fancy converter</a> for renaming all of your old specs!
 
 
 ```sh
 # in your project dir
 gem install thor &&
 thor install \
-http://github.com/jqr/thor_tasks/raw/master/rspec_rename_to_dotspec.thor &&
+https://github.com/jqr/thor_tasks/raw/master/rspec_rename_to_dotspec.thor &&
 thor rspec:rename_to_dotspec
 ```

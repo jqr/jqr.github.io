@@ -33,7 +33,7 @@ heroku create myapp-production --remote production
 <p>Heroku has a nice interface for setting up application specific settings, but
 I will assume your application configures itself according to the
 RAILS_ENV variable. Check out <a
-href="http://docs.heroku.com/config-vars">Heroku's docs</a> if you need more
+href="https://docs.heroku.com/config-vars">Heroku's docs</a> if you need more
 control.</p>
 
 <p>If you run your staging server in the production environment, you can skip this step.</p>

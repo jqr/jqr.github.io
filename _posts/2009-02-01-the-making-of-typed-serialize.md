@@ -4,7 +4,7 @@ title: The Making of typed_serialize
 summary: The design process of a Rails pattern.
 ---
 
-My <a href="http://github.com/jqr/typed_serialize">typed_serialize plugin</a> came from the repetition of code just like this.
+My <a href="https://github.com/jqr/typed_serialize">typed_serialize plugin</a> came from the repetition of code just like this.
 
 ```ruby
 serialize :options, Hash

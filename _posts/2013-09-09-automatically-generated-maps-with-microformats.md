@@ -3,7 +3,7 @@ layout: post
 title: Automatically Generated Maps with Microformats
 summary: Javascript-free google maps integration
 javascript:
-  - http://maps.google.com/maps/api/js?sensor=false
+  - https://maps.google.com/maps/api/js?sensor=false
   - http://ideafoundry.info/javascripts/sumo/microformat.js
   - http://ideafoundry.info/javascripts/sumo/hcard.js
   - http://ideafoundry.info/javascripts/simple-maps/map.js
@@ -42,7 +42,7 @@ javascript:
 
 <p>
   <div id="hcard-starbucks" class="vcard">
-    <a class="url fn" href="http://starbucks.com">Starbucks</a>
+    <a class="url fn" href="https://starbucks.com">Starbucks</a>
     <div class="adr">
       <span class="street-address">854 Broad Ripple Ave</span><br/>
       <span class="locality">Indianapolis</span>,
